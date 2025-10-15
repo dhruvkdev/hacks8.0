@@ -131,6 +131,8 @@
 }
 .clouds-bg {
   z-index: 1;
+  height: 55vh;
+  margin-bottom: 10vh;
 }
 .ground {
   z-index: 2;
@@ -145,9 +147,6 @@
   opacity: 0.8;
   width: 200px;
 }
-.floating-cloud-1 { top: 10%; transform: scale(0.8); }
-.floating-cloud-2 { top: 30%; transform: scale(1.2); }
-.floating-cloud-3 { top: 20%; transform: scale(1); }
 .main-content {
   position: relative;
   z-index: 5;
@@ -183,11 +182,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 60vh; /* or something suitable */
+  justify-content: flex-end;  /* Align to bottom of container */
+  height: 60vh;
   gap: 20px;
   padding: 0 20px;
   text-align: center;
+}
+.character-container {
+  position: relative;  /* add this */
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
 }
 
 .background-layer.clouds-static {
@@ -203,22 +208,50 @@
   pointer-events: none;
 }
 
-.character-container {
-  display: flex;
-  align-items: flex-end; /* align both images to bottom (grass level) */
-  gap: 10px; /* space between biking girl and pikachu */
-}
+
 
 .character-bike,
 .character-pikachu {
   position: relative;
-  bottom: 0; /* reset relative bottom */
   z-index: 11;
-  max-height: 150px; /* keep size consistent */
+  max-height: 125px; 
   object-fit: contain;
 }
+.character-bike{
+  max-height: 250px;
+}
+.clouds1{
+  z-index: 5;
+}
 
-/* Remove y animations if interfering or keep them if desired */
-
-
-
+.comingContainer {
+  display: flex;
+  justify-content: center;
+}
+.coming-soon-text{
+  font-size: 6em;
+  z-index: 4;
+  color: #F9CD00;
+  -webkit-text-stroke: 0.5rem #193087;
+  text-shadow: 0.5rem 0.5rem 0 #204988;
+  letter-spacing: 0.2em;
+  padding-top: 5vw;
+}
+.logo{
+  padding-bottom: 5vw;
+}
+.character-container{
+  margin-right: 25vw;
+  .character-pikachu{
+    padding-right: 3vw;
+    margin-top: 5vh;
+  }
+}
+.staticGrass {
+  position: absolute; /* or fixed depending on your layout */
+  bottom: 0;
+  left: 0;
+  width: 100%; /* match ground width */
+  z-index: 1; /* less than 2 (ground) */
+  pointer-events: none; /* optional, to ignore mouse events */
+}
